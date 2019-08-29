@@ -14,6 +14,7 @@ class User extends Authenticatable
     public $timestamps = false;
     public $incrementing = false;
     protected $primaryKey = 'email';
+    //protected $primaryKey = 'cedula';
 
     /**
      * The attributes that are mass assignable.

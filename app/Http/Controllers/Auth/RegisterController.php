@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'telefono'=>'required|integer',
             'email' => 'required|unique:users|max:255|email|unique:users,email',
             'password'=>'required',
+            'password-confirm' => 'required_with:password|same:password'
         ]);
     }
 

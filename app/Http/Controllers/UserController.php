@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+       /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +27,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        return 'todo funciona fino';
     }
 
     /**
@@ -87,7 +98,7 @@ class UserController extends Controller
         $usuario->telefono=$request->telefono;
         $usuario->save();
         flash('Se han modificado sus datos exitosamente')->success();
-        return redirect('/');
+        return redirect('/home');
     }
 
     /**

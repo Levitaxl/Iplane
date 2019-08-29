@@ -66,7 +66,7 @@
                                     </form>
 
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"> {{ __('Propiedades') }}
+                                    <a class="dropdown-item" href="{{ url('/users/update') }}"> {{ __('Propiedades') }}
                                  </a>
 
 

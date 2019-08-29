@@ -1,11 +1,19 @@
 @extends('layouts.app')
 @section('content')
+
+@if (session('status'))
+<div class="alert alert-success" role="alert">
+    {{ session('status') }}
+</div>
+@endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Editar') }}</div>
+                <div class="card-header">{{ __('Editar su informacion') }}</div>
                 @include('alerts.request')
+
+
 
 
                 <div class="card-body">
