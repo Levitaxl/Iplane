@@ -56,9 +56,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($email)
+    public function show($cedula)
     {
-        $user= User::findOrFail(Auth::user()->email);
+        $user= User::findOrFail(Auth::user()->cedula);
         return view('users.edit')->with('user',$user);
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
             //'cedula'=>'required|unique:users,cedula|integer',
             'direccion'=>'required|min:4|max:120',
             'telefono'=>'required|integer',
-            //'email' => 'required|unique:users|max:255|email|unique:users,email',
+            'email' => 'required|unique:users|max:255|email|unique:users,email',
             //'password'=>'required'
         ]);
 
@@ -96,6 +96,7 @@ class UserController extends Controller
         $usuario->apellido=$request->apellido;
         $usuario->direccion=$request->direccion;
         $usuario->telefono=$request->telefono;
+        $usuario->email=$request->email;
         $usuario->save();
         flash('Se han modificado sus datos exitosamente')->success();
         return redirect('/home');

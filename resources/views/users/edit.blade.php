@@ -47,7 +47,7 @@
                 
                         <div class="form-group">
                                 {{Form::label('email','Email')}}
-                                {{Form::text('email',$user->email,['class'=>'form-control','placeholder'=>'Email',"disabled"=>"disabled"])}}
+                                {{Form::text('email',$user->email,['class'=>'form-control','placeholder'=>'Email'])}}
                         </div>
 
                         <div class="form-group row mb-0">

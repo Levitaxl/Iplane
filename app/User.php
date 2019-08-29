@@ -13,8 +13,8 @@ class User extends Authenticatable
 
     public $timestamps = false;
     public $incrementing = false;
-    protected $primaryKey = 'email';
-    //protected $primaryKey = 'cedula';
+    //protected $primaryKey = 'email';
+    protected $primaryKey = 'cedula';
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +22,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre','apellido','cedula','direccion','telefono','email','password'
+        'nombre','apellido','cedula','direccion','telefono','email','password','rol'
     ];
 
 
