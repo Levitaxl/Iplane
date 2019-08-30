@@ -39,10 +39,10 @@ class LoginController extends Controller
 
     public function authenticated($request , $user){
         if($user->rol=='usuario'){
-            return redirect('/home') ;
+            return redirect('/homeUsuario');
         }
         if($user->rol=='administrador'){
-            return view('/home') ;
+            return redirect('/homeAdministrador');
         }
     }
 

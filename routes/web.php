@@ -18,4 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::resource('users','UserController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/homeUsuario', 'HomeController@indexUsuario')->name('home');
+Route::get('/homeAdministrador', 'HomeController@indexAdministrador')->name('home');
+
+Route::resource('agencias','AgenciaController');
+
