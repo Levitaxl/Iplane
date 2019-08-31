@@ -37,6 +37,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{url('/agencias')}}">Agencias</a>
                                   </li>
+
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/personal')}}">Personal</a>
+                                  </li>
                            
                     </ul>
 
