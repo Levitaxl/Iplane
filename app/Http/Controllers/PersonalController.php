@@ -54,7 +54,7 @@ class PersonalController extends Controller
             'direccion'=>'required|min:4|max:120',
             'telefono'=>'required|integer',
             'cargo'=>'required'
-        ]);
+            ]);
 
         $personal= new personal;
         $personal->nombre=$request->nombre;

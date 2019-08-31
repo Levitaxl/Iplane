@@ -41,6 +41,10 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="{{url('/personal')}}">Personal</a>
                                   </li>
+
+                                  <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/ciudad')}}">Ciudades</a>
+                                  </li>
                            
                     </ul>
 
