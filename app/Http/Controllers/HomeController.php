@@ -26,7 +26,7 @@ class HomeController extends Controller
         return view('users.home');
     }
 
-    public function indexAdministrador()
+    public function indexAdministrador(Request $request)
     {
         return view('administrador.home');
     }

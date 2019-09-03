@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    @if(Auth::user()->rol=='administrador')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -45,6 +46,10 @@
                                   <li class="nav-item">
                                     <a class="nav-link" href="{{url('/ciudad')}}">Ciudades</a>
                                   </li>
+
+                                  <li class="nav-item">
+                                        <a class="nav-link" href="{{url('/ruta')}}">Rutas</a>
+                                      </li>
                            
                     </ul>
 
@@ -85,4 +90,16 @@
         </main>
     </div>
 </body>
+
+@else 
+
+
+
+        <div class="jumbotron text-center">
+                <h1>
+                    Esta pagina no esta disponible
+                    El enlace que siguió puede estar roto o la página puede haberse eliminado.</h1>
+            </div>
+
+@endif
 </html>

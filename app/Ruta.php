@@ -4,22 +4,22 @@ namespace Iplane;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ciudad extends Model
+class Ruta extends Model
 {
     public $timestamps = false;
     protected $primaryKey = 'id';
-    protected $table='ciudades';
-    
+    protected $table='rutas';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'id','nombre'
+        'id','ciudadSalida','ciudadLlegadas'
     ];
 
-    public function ruta(){
-        return $this->belongsTo('Iplane\ruta');
+    public function ciudades(){
+        return $this->hasMany('Iplane\ciudad','id');
     }
 }
