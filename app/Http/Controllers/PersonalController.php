@@ -25,7 +25,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        $personal=personal::all();
+        $personal=personal::paginate(10);
         return view('administrador.personal.index')->with('personal',$personal);
     }
 

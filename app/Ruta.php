@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ruta extends Model
 {
     public $timestamps = false;
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id'; 
     protected $table='rutas';
 
     /**
@@ -16,10 +16,14 @@ class Ruta extends Model
      * @var array
      */
     protected $fillable = [
-        'id','ciudadSalida','ciudadLlegadas'
+        'id','ciudadSalida_id','ciudadLlegada_id'
     ];
 
-    public function ciudades(){
-        return $this->hasMany('Iplane\ciudad','id');
+    public function ciudadSalida(){
+        return $this->hasOne(ciudad::class,'id','ciudadSalida_id');
+    }
+
+    public function ciudadLlegada(){
+        return $this->hasOne(ciudad::class,'id','ciudadLlegada_id');
     }
 }

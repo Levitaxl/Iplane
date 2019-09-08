@@ -47,7 +47,7 @@
                                 <option>recepcionista</option>
                                 <option>otro</option>
                               </select>
-                    </div>
+                        </div>
     
         
             

@@ -33,24 +33,22 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                            
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/agencias')}}">Agencias</a>
-                                  </li>
-
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/personal')}}">Personal</a>
-                                  </li>
-
-                                  <li class="nav-item">
-                                    <a class="nav-link" href="{{url('/ciudad')}}">Ciudades</a>
-                                  </li>
-
-                                  <li class="nav-item">
-                                        <a class="nav-link" href="{{url('/ruta')}}">Rutas</a>
-                                      </li>
-                           
+                    <ul class="navbar-nav mr-auto">    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/agencias')}}">Agencias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/personal')}}">Personal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/ciudad')}}">Ciudades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/ruta')}}">Rutas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url('/vuelo')}}">Vuelos</a>
+                        </li>  
                     </ul>
 
                     <!-- Right Side Of Navbar -->

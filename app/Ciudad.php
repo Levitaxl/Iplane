@@ -20,6 +20,6 @@ class Ciudad extends Model
     ];
 
     public function ruta(){
-        return $this->belongsTo('Iplane\ruta');
+        return $this->belongsto('Iplane\ruta','id');
     }
 }

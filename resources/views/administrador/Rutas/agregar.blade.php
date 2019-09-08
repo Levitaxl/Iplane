@@ -13,9 +13,9 @@
                         <div class="form-group">
                             {{Form::label('ciudadSalida','Ciudad de salida')}}
                             <select name="ciudadSalida"class="browser-default custom-select">
-                                    @foreach($ciudades as $ciudadSalida)
-                                        <option>{{$ciudadSalida->nombre}}</option>
-                                    @endforeach
+                                    @for ($i = 0; $i <	sizeof($ciudades); $i++)
+                                            <option>{{$ciudades[$i]->nombre}}</option>
+                                   @endfor
                               </select>
                         </div>
 

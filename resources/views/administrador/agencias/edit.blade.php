@@ -15,7 +15,7 @@
     
                             <div class="form-group">
                                 {{Form::label('rif','RIF')}}
-                                {{Form::text('rif',$agencia->rif,['class'=>'form-control','placeholder'=>'RIF'])}}
+                                {{Form::text('rif',$agencia->rif,['class'=>'form-control','placeholder'=>'RIF',"disabled"=>"disabled"])}}
                             </div>
     
                             <div class="form-group">
@@ -39,12 +39,12 @@
                             </div>
 
                             <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </button>
-                                    </div>
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </button>
                                 </div>
+                            </div>
         
         
         

@@ -26,7 +26,7 @@ class CiudadController extends Controller
 
     public function index()
     {
-        $ciudades=ciudad::all();
+        $ciudades=ciudad::paginate(10);
         return view('administrador.ciudades.index')->with('ciudades',$ciudades);
     }
 
@@ -49,7 +49,7 @@ class CiudadController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nombre' => 'required|min:4|max:120',
+            'nombre' => 'required|min:4|max:120|regex:/^[a-zA-Z ]+$/|unique:ciudades,nombre',
         ]);
 
         $ciudad= new ciudad;
@@ -96,7 +96,7 @@ class CiudadController extends Controller
 
         if(!($ciudad->nombre==$request->nombre)){
             $this->validate($request,[
-                'nombre' => 'required|min:4|max:120|regex:/^[a-zA-Z ]+$/',
+                'nombre' => 'required|min:4|max:120|regex:/^[a-zA-Z ]+$/|unique:ciudades,nombre',
             ]);
             $ciudad->nombre=$request->nombre;
             $ciudad->save();

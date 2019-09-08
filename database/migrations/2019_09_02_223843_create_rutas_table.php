@@ -15,8 +15,10 @@ class CreateRutasTable extends Migration
     {
         Schema::create('rutas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ciudadSalida');
-            $table->string('ciudadLlegada');
+            $table->bigInteger('ciudadSalida_id')->unsigned();
+            $table->foreign('ciudadSalida_id')->references('id')->on('ciudades');
+            $table->bigInteger('ciudadLlegada_id')->unsigned();
+            $table->foreign('ciudadLlegada_id')->references('id')->on('ciudades');
         });
     }
 

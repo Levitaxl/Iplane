@@ -27,7 +27,7 @@ class AgenciaController extends Controller
      */
     public function index()
     {
-        $agencias= agencia::all();
+        $agencias= agencia::paginate(10);
         return view('administrador.agencias.index')->with('agencias',$agencias);
     }
 
@@ -105,7 +105,7 @@ class AgenciaController extends Controller
     {
         $this->validate($request, [
             //'rif' => 'required|min:10|max:10|unique:agencias,rif',
-            //'nombreDeLaAgencia' => 'required|min:4|max:120|unique:agencias,nombreDeLaAgencia',
+            'nombreDeLaAgencia' => 'required|min:4|max:120|unique:agencias,nombreDeLaAgencia',
             'direccion'=>'required|min:4|max:120',
             'telefono'=>'required|integer',
             'personaContacto'=>'required|min:4|max:120',

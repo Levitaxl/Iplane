@@ -3,12 +3,11 @@
 namespace Iplane\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Iplane\Personal;
 use Iplane\Ruta;
-use Iplane\Ciudad;
+use Iplane\vuelo;
 
-
-
-class RutaController extends Controller
+class VueloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,8 @@ class RutaController extends Controller
      */
     public function index()
     {
-        $rutas=ruta::paginate(10);
         
-        return view('administrador.rutas.index')->with('rutas',$rutas);
+        return view('administrador.vuelos.index');
     }
 
     /**
@@ -29,8 +27,9 @@ class RutaController extends Controller
      */
     public function create()
     {
-        $ciudades=ciudad::all();
-        return view('administrador.rutas.agregar')->with('ciudades',$ciudades);
+        $personal=personal::all();
+        $rutas=ruta::all();
+        return view('administrador.vuelos.agregar')->with('personal',$personal)->with('rutas',$rutas);
     }
 
     /**
@@ -42,15 +41,35 @@ class RutaController extends Controller
     public function store(Request $request)
     {
 
-        $ruta= new Ruta;
-        $ruta->ciudadSalida_id=ciudad::where('nombre', $request->ciudadSalida)->first()->id;
-        $ruta->ciudadLlegada_id=ciudad::where('nombre', $request->ciudadLlegada)->first()->id;
-        $ruta->save();
+        //return $request->fecha_vuelo;
+        $this->validate($request,[
+            'fecha_vuelo' => 'date_validation|required',
+            'hora_vuelo'=>'hour_validation|required',
+            'capacidad_pasajeros'=>'integer|max:30|required',
+            'piloto'=>'required',
+            'copiloto'=>'required',
+            'sobrecargo1'=>'required',
+            'sobrecargo2'=>'required',
+            ]);
 
-        flash('Se ha registrado la ruta exitosamente')->success();
-        return redirect('/homeAdministrador');
+        $piloto=explode('-', $request->piloto);
+        $copiloto=explode('-',$request->copiloto);
+        $sobrecargo1=explode('-', $request->sobrecargo1);
+        $sobrecargo2=explode('-', $request->sobrecargo2);
+
+        $id_piloto=$piloto[1];
+        $id_copiloto=$copiloto[1];
+        $id_sobrecargo1=$sobrecargo1[1];
+        $id_sobrecargo2=$sobrecargo2[1];
+
+        if($id_sobrecargo1==$id_sobrecargo2){
+            flash('Escoja 2 sobrecargo distintos')->error();  
+            return redirect('/vuelo/create');      
+        }
+
+        
+        
     }
-
 
     /**
      * Display the specified resource.
@@ -60,6 +79,7 @@ class RutaController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -70,9 +90,7 @@ class RutaController extends Controller
      */
     public function edit($id)
     {
-        $ruta= ruta::find($id);
-        $ciudades=ciudad::all();
-        return view('administrador.rutas.edit')->with('ruta',$ruta)->with('ciudades',$ciudades);
+        //
     }
 
     /**
@@ -84,13 +102,7 @@ class RutaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ruta= ruta::find($id);
-        $ruta->ciudadSalida_id=ciudad::where('nombre', $request->ciudadSalida)->first()->id;
-        $ruta->ciudadLlegada_id=ciudad::where('nombre', $request->ciudadLlegada)->first()->id;
-        $ruta->save();
-
-        flash('Se ha modificado la ruta # '.$ruta->id.' exitosamente')->success();
-        return redirect('/homeAdministrador');
+        //
     }
 
     /**
@@ -101,9 +113,6 @@ class RutaController extends Controller
      */
     public function destroy($id)
     {
-        $ruta= ruta::find($id);
-        $ruta->delete();
-        flash('Se ha eliminado la ruta # '. $ruta->id.' exitosamente')->success();
-        return redirect('/homeAdministrador');//
+        //
     }
 }

@@ -3,7 +3,7 @@
 
 <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">{{ __('Editar el usuario:') }}</div>
                     @include('alerts.request')
@@ -18,7 +18,7 @@
                                 <select name="ciudadSalida"class="browser-default custom-select">
                                 
                                     @for ($i = 0; $i <sizeof($ciudades); $i++)
-                                            @if ($ruta->ciudadSalida==$ciudades[$i]->nombre) 
+                                            @if ($ruta->ciudadSalida->nombre==$ciudades[$i]->nombre) 
                                                 <option selected="true">{{$ciudades[$i]->nombre}}</option>  
                                             @else
                                                 <option>{{$ciudades[$i]->nombre}}</option>
@@ -31,7 +31,7 @@
                                 {{Form::label('ciudadSalida','Ciudad de salida')}}
                                 <select name="ciudadLlegada"class="browser-default custom-select">
                                     @for ($i = 0; $i <	sizeof($ciudades); $i++)
-                                            @if ($ruta->ciudadLlegada==$ciudades[$i]->nombre) 
+                                            @if ($ruta->ciudadLlegada->nombre==$ciudades[$i]->nombre) 
                                                 <option selected>{{$ciudades[$i]->nombre}}</option>
                                                 
                                             @else
