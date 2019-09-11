@@ -30,7 +30,6 @@ class AppServiceProvider extends ServiceProvider
                 $dia=$fecha[0];
                 $mes=$fecha[1];
                 $ano=$fecha[2];
-                //return $dia.'+'.$mes.'+'.$ano;
                 if((is_numeric($dia)&&is_numeric($mes)&&is_numeric($ano)))
                     if(checkdate($mes, $dia, $ano))
                         return true;

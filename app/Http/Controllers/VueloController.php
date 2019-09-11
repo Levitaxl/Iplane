@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Iplane\Personal;
 use Iplane\Ruta;
 use Iplane\vuelo;
+use Carbon\Carbon;
+use DateTime;
+
 
 class VueloController extends Controller
 {
@@ -16,8 +19,8 @@ class VueloController extends Controller
      */
     public function index()
     {
-        
-        return view('administrador.vuelos.index');
+        $vuelos=vuelo::paginate(10);
+        return view('administrador.vuelos.index')->with('vuelos',$vuelos);
     }
 
     /**
@@ -48,24 +51,42 @@ class VueloController extends Controller
             'capacidad_pasajeros'=>'integer|max:30|required',
             'piloto'=>'required',
             'copiloto'=>'required',
-            'sobrecargo1'=>'required',
+            'sobrecargo1'=>'required|different:sobrecargo2',
             'sobrecargo2'=>'required',
             ]);
+
+        $fecha_vuelo = explode('/', $request->fecha_vuelo);
+        $dia=$fecha_vuelo[0];
+        $mes=$fecha_vuelo[1];
+        $ano=$fecha_vuelo[2];
+        $hora_vuelo = explode(':', $request->hora_vuelo);
+        $hora=$hora_vuelo[0];
+        $minuto=$hora_vuelo[1];
+        $fecha_vuelo=Carbon::create($ano, $mes, $dia, $hora,$minuto,0);
 
         $piloto=explode('-', $request->piloto);
         $copiloto=explode('-',$request->copiloto);
         $sobrecargo1=explode('-', $request->sobrecargo1);
         $sobrecargo2=explode('-', $request->sobrecargo2);
 
-        $id_piloto=$piloto[1];
-        $id_copiloto=$copiloto[1];
-        $id_sobrecargo1=$sobrecargo1[1];
-        $id_sobrecargo2=$sobrecargo2[1];
+        $piloto_id=$piloto[1];
+        $copiloto_id=$copiloto[1];
+        $sobrecargo1_id=$sobrecargo1[1];
+        $sobrecargo2_id=$sobrecargo2[1];
 
-        if($id_sobrecargo1==$id_sobrecargo2){
-            flash('Escoja 2 sobrecargo distintos')->error();  
-            return redirect('/vuelo/create');      
-        }
+        $vuelo=new vuelo();
+        $vuelo->ruta_id=$request->ruta_id;
+        $vuelo->capacidad_pasajeros=$request->capacidad_pasajeros;
+        $vuelo->fecha_hora=$fecha_vuelo;
+        $vuelo->piloto_id=$piloto_id;
+        $vuelo->copiloto_id=$copiloto_id;
+        $vuelo->sobrecargo1_id=$sobrecargo1_id;
+        $vuelo->sobrecargo2_id=$sobrecargo2_id;
+
+        $vuelo->save();
+
+        flash('Se ha registrado el vuelo exitosamente')->success();
+        return redirect('/homeAdministrador');
 
         
         

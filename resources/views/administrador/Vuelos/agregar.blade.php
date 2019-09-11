@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Registrar a un trabajador') }}</div>
+                <div class="card-header">{{ __('Crear un vuelo') }}</div>
        
 
                 <div class="card-body">
@@ -14,17 +14,20 @@
                         @csrf
 
                         <div class="form-group">
-                            {{Form::label('numero_ruta','Numero de la ruta')}}
-                            <select name="numero_ruta" class="browser-default custom-select">
+                            {{Form::label('ruta_id','ID de la ruta')}}
+                            <select name="ruta_id" class="browser-default custom-select">
                                 @for ($i = 0; $i <	sizeof($rutas); $i++)
                                     <option> {{$rutas[$i]->id}}</option>
                                @endfor
                             </select>
                         </div>
-
                         <div class="form-group">
-                                {{Form::label('capacidad_pasajeros','Capacidad de pasajeros')}}
-                                {{Form::text('capacidad_pasajeros','',['class'=>'form-control','placeholder'=>'Capacidad de pasajeros'])}}
+                            {{Form::label('capacidad_pasajeros','Capacidad de pasajeros')}}
+                            <select name="capacidad_pasajeros" class="browser-default custom-select">
+                                @for ($i = 15; $i <=30; $i++)
+                                    <option>{{$i}}</option>
+                               @endfor
+                              </select>
                         </div>
 
                         
@@ -82,11 +85,6 @@
                                @endfor
                               </select>
                         </div>
-    
-        
-            
-            
-
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -95,9 +93,6 @@
                                 </button>
                             </div>
                         </div>
-
-
-
                     {!! Form::close() !!}
                 </div>
 
